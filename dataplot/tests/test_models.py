@@ -17,11 +17,6 @@ class AssetModelTest(TestCase):
         max_length = asset._meta.get_field('asset').max_length
         self.assertEqual(max_length, 100)
 
-    def test_asset_blank(self):
-        asset = Asset.objects.get(id=1)
-        blank = asset._meta.get_field('asset').blank
-        self.assertEqual(blank, True)
-
     def test_asset_default(self):
         asset = Asset.objects.get(id=1)
         default = asset._meta.get_field('asset').default
