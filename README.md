@@ -8,7 +8,7 @@ Other features of the app include:
 * Asset and column models with a one-asset-to-many-column  relation
 * Page that shows all possible parquet queries
 
-A function has also been developed in the 'read_csv_and_store_parquet.py' that converts csv data into wide-formatted parquet files partitioned by asset, year, and month.
+A function has also been developed in the 'read_csv_and_store_parquet.py' that uses PySpark to convert csv data into wide-formatted parquet files partitioned by asset, year, and month.
 
 Pertaining to Django testing, Form, Model, and View tests have been developed and provide 100% coverage.
 
