@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <p><strong>Date Range of Data</strong></p>
+            <p>{{ start_date|date:'Y-m-d' }} to {{ end_date|date:'Y-m-d' }}</p>
+            <p class="text-muted">Note: To get all results for an asset and column, enter start and end dates as
+                '2020-10-03' and '2020-10-11', respectively.</p>
+            <p class="text-muted">This is necessary as each date cuts off at 12:00 am, i.e., entering an end date of
+                2020-10-10 will not return data for the day of 2020-10-10.</p>
+            <p style="margin-top:5rem"><strong>Go to other pages</strong></p>
+            <p><a href="{% url 'dataplot:get_from_parquet' %}">Go to fetch from parquet page</a></p>
+            <p><a href="{% url 'dataplot:consume_rest_api' %}">Go to consume REST API page</a></p>
+        </div>
+        <div class="col-sm-auto" style="margin-left:1.5rem">
+            <p><strong>Assets</strong></p>
+            <ul style="list-style-position: inside;padding-left:0">
+                {% for asset in assets %}
+                <li>{{ asset }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-auto" style="margin-left:2.5rem">
+            <p><strong>Columns</strong></p>
+            <ul style="list-style-position: inside;padding-left:0">
+                {% for column in columns %}
+                {% if column != '' %}
+                <li>{{ column }}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

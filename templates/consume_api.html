@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    <h1>Consume REST API</h1>
+    {% if messages %}
+    <div class="alert alert-danger alert-dismissible fade show" style="max-width: 42rem;" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+    {% endif %}
+    {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" style="max-width: 42rem;" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger alert-dismissible fade show" style="max-width: 42rem;" role="alert">
+                {{ error }}
+                <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div id="search_results_form">
+        <p><strong>Enter start date, end date, asset, and column queries. Results will be consumed from the REST API
+            service and returned in the browser.</strong>
+        </p>
+        <form action="" method="GET">
+            <div class="row">
+                <div class="col">
+                    <label for="start_date">Start date (format: 2020-10-03): </label>
+                    <input id="start_date" class="form-control" type="text" name="start_date">
+                </div>
+                <div class="col">
+                    <label for="end_date">End date (format: 2020-10-10): </label>
+                    <input id="end_date" class="form-control" type="text" name="end_date">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="asset">Asset: </label>
+                    <input id="asset" class="form-control" type="text" name="asset">
+                </div>
+                <div class="col">
+                    <label for="column">Column: </label>
+                    <input id="column" class="form-control" type="text" name="column">
+                </div>
+            </div>
+            <button class="btn btn-primary" style="margin-top:0.6rem" type="submit">Consume API</button>
+        </form>
+    </div>
+    <p style="margin-top:1.5rem"><a href="{% url 'dataplot:get_from_parquet' %}">Go to fetch from parquet page</a></p>
+    <p><a href="{% url 'dataplot:all_possible_parquet_queries' %}">View all possible parquet queries</a></p>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+    {% if consumed_api_result|length == 0 %}
+    <h1>Consumed REST API Results</h1>
+    <p>Query(s) incorrectly entered. Please <a href="{% url 'dataplot:consume_rest_api' %}">go back to the consume REST
+        API page</a>, revise your query(s) and try again.</p>
+    {% else %}
+    <h1 class="d-inline">Consumed REST API Results</h1>
+    <div class="d-inline" style="position:absolute">
+        <ul style="list-style:none;">
+            <li><a href="{% url 'dataplot:get_from_parquet' %}">Go to fetch from parquet page</a></li>
+            <li><a href="{% url 'dataplot:consume_rest_api' %}">Go to consume REST API page</a></li>
+        </ul>
+    </div>
+    <p style="margin-top:1.5rem;">{{ consumed_api_result }}</p>
+    {% endif %}
+</div>
+
+{% endblock content %}
