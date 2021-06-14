@@ -12,6 +12,15 @@ from dataplot.forms import QueryForm
 from django.conf import settings
 
 
+import os
+import re
+import sys
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
+import django
+
+django.setup()
+
 def get_from_parquet(request):
     if request.GET:
         try:
@@ -60,7 +69,7 @@ def consume_rest_api(request):
                 asset = query_form.cleaned_data['asset']
                 column = query_form.cleaned_data['column']
                 consumed_api_result = (requests.get(
-                    url=f'https://parquetrestapi.herokuapp.com/?start_date={start_date}&end_date={end_date}'
+                    url=f'http://127.0.0.1:8000/?start_date={start_date}&end_date={end_date}'
                         f'&asset={asset}&column={column}').json())
                 context = {'consumed_api_result': consumed_api_result}
                 return render(request, 'consumed_api_result.html', context)
