@@ -14,7 +14,7 @@ Pertaining to Django testing, Form, Model, and View tests have been developed an
 
 ### Additional File
 
-A Google Colaboratory notebook explaining the steps to process long-formatted csv files into wide-formatted partitioned parquet files.
+A Google Colaboratory notebook explaining the steps to process long-formatted csv files into wide-formatted partitioned parquet files has also been included in this repo.
 
 ###### Credits
 
