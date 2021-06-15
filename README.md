@@ -12,12 +12,9 @@ A function has also been developed in the 'read_csv_and_store_parquet.py' that u
 
 Pertaining to Django testing, Form, Model, and View tests have been developed and provide 100% coverage.
 
-### Additional Files
+### Additional File
 
-Two files have been included in this repo that provide additional explanatory context to the Django app:
-
-1. A Google Colaboratory notebook explaining the steps to process long-formatted csv files into wide-formatted partitioned parquet files.
-2. A screen capture video where I walk through development and use of the app.
+A Google Colaboratory notebook explaining the steps to process long-formatted csv files into wide-formatted partitioned parquet files.
 
 ###### Credits
 
